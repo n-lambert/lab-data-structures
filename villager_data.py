@@ -1,6 +1,6 @@
 """Functions to parse a file containing villager data."""
-
-
+# name|species|personality|hobby|motto
+ 
 def all_species(filename):
     """Return a set of unique species in the given file.
 
@@ -10,9 +10,19 @@ def all_species(filename):
     Return:
         - set[str]: a set of strings
     """
-
     species = set()
 
+    villager_info = open(filename)
+    for line in villager_info:
+        # iterate through file
+        indiv_data = line.split("|")
+        # make each line a list
+        
+        villager_species = indiv_data[1]
+        species.add(villager_species)
+        
+    
+    filename.close()
     # TODO: replace this with your code
 
     return species
@@ -30,6 +40,21 @@ def get_villagers_by_species(filename, search_string="All"):
     """
 
     villagers = []
+    villager_info = open(filename)
+
+    for line in villager_info:
+        indiv_data = line.split("|")
+        
+        villager_name = indiv_data[0]
+        villager_species = indiv_data[1]
+
+        if villager_species == search_string:
+            villagers.append(villager_name) 
+        else:
+            villagers.append(villager_name)
+      
+
+    # print(villagers)
 
     # TODO: replace this with your code
 
